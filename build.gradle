@@ -1,0 +1,26 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+test {
+	useJUnitPlatform()
+}
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-batch'
+	runtimeOnly 'org.hsqldb:hsqldb'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.batch:spring-batch-test'
+	// https://mavenlibs.com/maven/dependency/net.lingala.zip4j/zip4j
+	implementation group: 'net.lingala.zip4j', name: 'zip4j', version: '2.10.0'
+	// https://mvnrepository.com/artifact/commons-io/commons-io
+	implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+}

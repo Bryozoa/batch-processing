@@ -18,8 +18,6 @@ public class FilesRenameTest {
         Path target = Paths.get("src/test/resources/");
 
         Unzipper.unzipFolderZip4j(source, target);
-//        System.out.println("Files were unzipped");
-
         FilesRename.rename(target.toString());
 
         List<String> fileNamesExpected = new LinkedList<>();
@@ -29,13 +27,13 @@ public class FilesRenameTest {
 
         List<String> fileNamesActual = new LinkedList<>();
 
-
         File myfolder = new File(target.toString());
         File[] file_array = myfolder.listFiles();
-        for (int i = 0; i < file_array.length; i++) {
-            if (file_array[i].isFile() && !file_array[i].getName().equals("schema-all.sql") &&
-                    !file_array[i].getName().equals("data.zip")) {
-                fileNamesActual.add(file_array[i].getName());
+        assert file_array != null;
+        for (File file : file_array) {
+            if (file.isFile() && !file.getName().equals("schema-all.sql") &&
+                    !file.getName().equals("data.zip")) {
+                fileNamesActual.add(file.getName());
             }
         }
 
